@@ -6,14 +6,13 @@ import type { Metadata } from 'next';
 import { CheckCircleIcon} from '@heroicons/react/24/solid';
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
 
 // Funktion zum Generieren der Metadaten
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const product = products.find((p) => p.slug === resolvedParams.slug);
+  const product = products.find((p) => p.slug === params.slug);
   if (!product) return { title: 'Produkt nicht gefunden' };
 
   return {
