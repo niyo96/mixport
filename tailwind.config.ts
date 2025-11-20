@@ -1,4 +1,5 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
+import typography from '@tailwindcss/typography';
 
 export default {
   content: [
@@ -8,9 +9,9 @@ export default {
     extend: {
       colors: {
         primary: '#007AFF',
+        whatsapp: '#34C759', // Eindeutiger Name für die WhatsApp-Farbe
         accent: {
           1: '#FF9500',
-          2: '#34C759',
         },
         neutral: {
           light: '#F5F5F7',
@@ -34,6 +35,6 @@ export default {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
   ],
-} satisfies Config
+} satisfies Config;

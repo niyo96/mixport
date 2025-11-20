@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import type { ReactNode } from 'react';
+import type { ReactNode, CSSProperties } from 'react';
 
 interface ButtonProps {
   href: string;
   children: ReactNode;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'whatsapp';
   className?: string;
 }
 
@@ -14,10 +14,16 @@ const Button = ({ href, children, variant = 'primary', className = '' }: ButtonP
   const variantClasses = {
     primary: 'bg-primary text-white',
     secondary: 'bg-neutral-dark text-white',
+    whatsapp: 'text-white', // bg-whatsapp entfernt
   };
 
+  const style: CSSProperties = {};
+  if (variant === 'whatsapp') {
+    style.backgroundColor = '#34C759'; // Direktes Setzen der Farbe
+  }
+
   return (
-    <Link href={href} className={`${baseClasses} ${variantClasses[variant]} ${className}`}>
+    <Link href={href} className={`${baseClasses} ${variantClasses[variant]} ${className}`} style={style}>
       {children}
     </Link>
   );

@@ -5,8 +5,15 @@ import Button from "@/components/ui/button"
 import type {Metadata} from "next"
 import {CheckCircleIcon} from "@heroicons/react/24/solid"
 
+// Korrekter Typ für die Seiten-Props
+interface ProductPageProps {
+    params: {
+        slug: string;
+    };
+}
+
 // Funktion zum Generieren der Metadaten
-export async function generateMetadata({params}: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({params}: ProductPageProps): Promise<Metadata> {
     const product = products.find((p) => p.slug === params.slug)
     if (!product) return {title: "Produkt nicht gefunden"}
 
@@ -34,8 +41,8 @@ const DetailSection = ({title, children}: { title: string; children: React.React
     </div>
 )
 
-// Die überarbeitete Produktdetailseite
-export default function ProductDetailPage({params}: { params: { slug: string } }) {
+// Die überarbeitete Produktdetailseite mit korrektem Typ
+export default function ProductDetailPage({params}: ProductPageProps) {
     const product = products.find((p) => p.slug === params.slug)
     if (!product) notFound()
 
@@ -45,7 +52,7 @@ export default function ProductDetailPage({params}: { params: { slug: string } }
         <div className="py-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                 {/* Linke Spalte: Bild */}
-                <div className="rounded-3xl p-4 md:p-8 shadow-sm lg:sticky top-24">
+                <div className=" rounded-3xl p-4 md:p-8 shadow-sm lg:sticky top-24">
                     <Image
                         src={product.imageUrl}
                         alt={`Bild von ${product.name}`}
@@ -75,10 +82,15 @@ export default function ProductDetailPage({params}: { params: { slug: string } }
                                     <span className="font-semibold text-neutral-dark">{tier.price}€</span>
                                 </div>
                             ))}
+
                             {/* CTA Button */}
                             <div className="pt-4">
-                                <Button href={whatsappUrl} variant="primary" className="w-full text-lg shadow-lg hover:shadow-primary/50">
-                                    Jetzt per WhatsApp anfragen
+                                <Button
+                                    href={whatsappUrl}
+                                    variant="whatsapp"
+                                    className="w-full text-lg shadow-lg hover:shadow-green-500/50 flex items-center justify-center gap-3"
+                                >
+                                    <span>Jetzt per WhatsApp anfragen</span>
                                 </Button>
                             </div>
                             <p className="text-sm text-neutral-dark/60 pt-2">Mehr Tage auf Anfrage.</p>
@@ -102,7 +114,7 @@ export default function ProductDetailPage({params}: { params: { slug: string } }
                                 <ul className="space-y-2">
                                     {product.rentalConditions.requirements.map((req, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckCircleIcon className="h-5 w-5 text-accent-2 mr-2 mt-0.5 flex-shrink-0"/>
+                                            <CheckCircleIcon className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0"/>
                                             <span>{req}</span>
                                         </li>
                                     ))}
