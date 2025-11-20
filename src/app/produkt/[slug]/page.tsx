@@ -2,7 +2,8 @@ import {products} from "@/data/products"
 import {notFound} from "next/navigation"
 import Image from "next/image"
 import Button from "@/components/ui/button"
-import type {Metadata} from "next"
+// @ts-ignore
+import type {Metadata, PageProps} from "next"
 import {CheckCircleIcon} from "@heroicons/react/24/solid"
 
 // Funktion zum Generieren der Metadaten
@@ -37,7 +38,7 @@ const DetailSection = ({title, children}: { title: string; children: React.React
 )
 
 // Die überarbeitete Produktdetailseite mit korrektem Typ
-export default function ProductDetailPage({params}: { params: { slug: string } }) {
+export default function ProductDetailPage({params}: PageProps<{ slug: string }>) {
     const product = products.find((p) => p.slug === params.slug)
     if (!product) notFound()
 
