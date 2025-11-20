@@ -5,15 +5,8 @@ import Button from '@/components/ui/button';
 import type { Metadata } from 'next';
 import { CheckCircleIcon} from '@heroicons/react/24/solid';
 
-// Korrekter Typ für die Seiten-Props
-interface ProductPageProps {
-  params: {
-    slug: string;
-  };
-}
-
 // Funktion zum Generieren der Metadaten
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const product = products.find((p) => p.slug === params.slug);
   if (!product) return { title: 'Produkt nicht gefunden' };
 
@@ -42,7 +35,7 @@ const DetailSection = ({ title, children }: { title: string; children: React.Rea
 );
 
 // Die überarbeitete Produktdetailseite mit korrektem Typ
-export default function ProductDetailPage({ params }: ProductPageProps) {
+export default function ProductDetailPage({ params }: { params: { slug: string } }) {
   const product = products.find((p) => p.slug === params.slug);
   if (!product) notFound();
 
