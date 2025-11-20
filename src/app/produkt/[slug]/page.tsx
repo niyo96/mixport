@@ -54,7 +54,7 @@ export default async function ProductDetailPage(
         <div className="py-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                 {/* Linke Spalte: Bild */}
-                <div className="rounded-3xl p-4 md:p-8 shadow-sm sticky top-24">
+                <div className="rounded-3xl p-4 md:p-8 shadow-sm lg:sticky top-24">
                     <Image
                         src={product.imageUrl}
                         alt={`Bild von ${product.name}`}
