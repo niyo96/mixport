@@ -8,9 +8,11 @@ import {CheckCircleIcon} from "@heroicons/react/24/solid"
 
 // Funktion zum Generieren der Metadaten
 export async function generateMetadata(
-    {params}: { params: { slug: string } }
+    {params}: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-    const product = products.find((p) => p.slug === params.slug)
+    const {slug} = await params
+
+    const product = products.find((p) => p.slug === slug)
     if (!product) return {title: "Produkt nicht gefunden"}
 
     return {
@@ -19,8 +21,8 @@ export async function generateMetadata(
         openGraph: {
             title: `${product.name} mieten | MIXPORT`,
             description: product.longDescription,
-            images: [{url: product.imageUrl, width: 1200, height: 630, alt: `Bild von ${product.name}`}],
-        },
+            images: [{url: product.imageUrl, width: 1200, height: 630, alt: `Bild von ${product.name}`}]
+        }
     }
 }
 
@@ -38,8 +40,10 @@ const DetailSection = ({title, children}: { title: string; children: React.React
 )
 
 // Die überarbeitete Produktdetailseite mit korrektem Typ
-export default function ProductDetailPage({params}: PageProps<{ slug: string }>) {
-    const product = products.find((p) => p.slug === params.slug)
+export default async function ProductDetailPage(
+    {params}: { params: Promise<{ slug: string }> }) {
+    const {slug} = await params
+    const product = products.find((p) => p.slug === slug)
     if (!product) notFound()
 
     const whatsappUrl = `https://wa.me/4915511205090?text=Hallo!%20Ich%20habe%20Interesse%20an%20der%20Miete%20von:%20${encodeURIComponent(product.name)}.`
