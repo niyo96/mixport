@@ -1,88 +1,74 @@
-import Image from "next/image";
+import { products } from '@/data/products';
+import Link from 'next/link';
+import Image from 'next/image';
+import Button from '@/components/ui/button';
+import type { Product } from '@/lib/types';
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+// SEO-optimierte Texte
+const seo = {
+  title: "Professionelles DJ Equipment mieten | MIXPORT",
+  h1: "Miete High-End DJ-Equipment",
+  subheading: "Von Pioneer DJ-Konsolen bis zu kompletten PA-Anlagen – bei uns findest du professionelles Equipment für dein Event. Zuverlässig, einfach und schnell.",
+  cta: "Jetzt Equipment ansehen",
+  productSectionTitle: "Unser Equipment",
+};
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+// Hero Section Komponente
+const HeroSection = () => (
+  <section className="text-center py-16 md:py-24">
+    <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-neutral-dark animate-fade-in-down">
+      {seo.h1}
+    </h1>
+    <p className="max-w-2xl mx-auto text-lg md:text-xl text-neutral-dark/80 mb-8 animate-fade-in-up">
+      {seo.subheading}
+    </p>
+    <div className="animate-fade-in-up animation-delay-300">
+      <Button href="#equipment-grid" variant="primary">
+        {seo.cta}
+      </Button>
     </div>
+  </section>
+);
+
+// Überarbeitete Produktkarten Komponente
+const ProductCard = ({ product }: { product: Product }) => (
+  <Link href={`/produkt/${product.slug}`} className="group block rounded-2xl overflow-hidden transition-transform transform hover:-translate-y-1 animate-fade-in-up">
+    <div className="p-4 md:p-6">
+      <Image
+        src={product.imageUrl}
+        alt={`Bild von ${product.name}`}
+        width={500}
+        height={500}
+        className="w-full h-48 object-contain rounded-lg transition-transform duration-300"
+      />
+    </div>
+    <div className="p-5 bg-neutral-light rounded-b-2xl">
+      <h3 className="text-lg font-bold text-neutral-dark truncate">{product.name}</h3>
+      <p className="text-sm text-neutral-dark/70 mt-1">{product.shortDescription}</p>
+      <p className="text-base font-semibold text-primary mt-3">
+        {product.priceInfo}
+      </p>
+    </div>
+  </Link>
+);
+
+// Startseite
+export default function HomePage() {
+  return (
+    <>
+      <HeroSection />
+      <section id="equipment-grid" className="py-16 md:py-24">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center tracking-tighter mb-12 text-neutral-dark">
+            {seo.productSectionTitle}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
