@@ -2,8 +2,7 @@ import {products} from "@/data/products"
 import {notFound} from "next/navigation"
 import Image from "next/image"
 import Button from "@/components/ui/button"
-// @ts-ignore
-import type {Metadata, PageProps} from "next"
+import type {Metadata} from "next"
 import {CheckCircleIcon} from "@heroicons/react/24/solid"
 
 // Funktion zum Generieren der Metadaten
