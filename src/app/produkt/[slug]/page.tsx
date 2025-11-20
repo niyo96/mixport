@@ -16,6 +16,7 @@ export async function generateMetadata(
 
     return {
         title: `${product.name} mieten | MIXPORT`,
+        metadataBase: new URL('https://mixport.de'),
         description: `Miete ${product.name} für dein nächstes Event. ${product.longDescription}`,
         openGraph: {
             title: `${product.name} mieten | MIXPORT`,
