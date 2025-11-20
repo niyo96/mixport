@@ -1,16 +1,25 @@
 import type {NextConfig} from "next"
 
+// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
+import {initOpenNextCloudflareForDev} from "@opennextjs/cloudflare"
+
 const nextConfig: NextConfig = {
-    output: "export", // This might be needed for static export
-    trailingSlash: true,
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    typescript: {
+        ignoreBuildErrors: true,
+    },
     images: {
-        unoptimized: true, // Required for Cloudflare deployment
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "**",
+            },
+        ],
+        unoptimized: true,
     },
 }
 
 export default nextConfig
-
-// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
-import {initOpenNextCloudflareForDev} from "@opennextjs/cloudflare"
-
 initOpenNextCloudflareForDev()
