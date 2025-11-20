@@ -11,15 +11,20 @@ interface ButtonProps {
 const Button = ({ href, children, variant = 'primary', className = '' }: ButtonProps) => {
   const baseClasses = 'inline-block px-8 py-4 rounded-full font-semibold text-center transition-transform transform hover:scale-105';
   
+  // Entferne Tailwind bg-Klassen hier, da wir sie per Inline-Style setzen
   const variantClasses = {
-    primary: 'bg-primary text-white',
-    secondary: 'bg-neutral-dark text-white',
-    whatsapp: 'text-white', // bg-whatsapp entfernt
+    primary: 'text-white',
+    secondary: 'text-white',
+    whatsapp: 'text-white',
   };
 
   const style: CSSProperties = {};
-  if (variant === 'whatsapp') {
-    style.backgroundColor = '#34C759'; // Direktes Setzen der Farbe
+  if (variant === 'primary') {
+    style.backgroundColor = '#007AFF'; // Direktes Setzen der Primary-Farbe
+  } else if (variant === 'secondary') {
+    style.backgroundColor = '#1D1D1F'; // Direktes Setzen der Neutral-Dark-Farbe
+  } else if (variant === 'whatsapp') {
+    style.backgroundColor = '#34C759'; // Direktes Setzen der WhatsApp-Farbe
   }
 
   return (
