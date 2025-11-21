@@ -16,7 +16,7 @@ export async function generateMetadata(
 
     return {
         title: `${product.name} mieten | MIXPORT`,
-        metadataBase: new URL('https://mixport.de'),
+        metadataBase: new URL("https://mixport.de"),
         description: `Miete ${product.name} für dein nächstes Event. ${product.longDescription}`,
         openGraph: {
             title: `${product.name} mieten | MIXPORT`,
@@ -48,9 +48,6 @@ export default async function ProductDetailPage(
 
     const whatsappUrl = `https://wa.me/4915511205090?text=Hallo!%20Ich%20habe%20Interesse%20an%20der%20Miete%20von:%20${encodeURIComponent(product.name)}.`
 
-    // Array von Tailwind-Textgrößen für die Preisstaffelung
-    const priceTextSizes = ["text-xl", "text-lg", "text-base", "text-sm"]
-
     return (
         <div className="py-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -79,13 +76,13 @@ export default async function ProductDetailPage(
                     {/* Preisstaffelung */}
                     <DetailSection title="Mietpreise">
                         <div className="space-y-2"> {/* Abstand reduziert auf space-y-2 */}
-                            {product.priceTiers.map((tier, index) => (
+                            {product.priceTiers.map((tier) => (
                                 <div
                                     key={tier.duration}
                                     className="flex justify-between items-center bg-neutral-dark/5 border border-neutral-dark/10 p-4 rounded-xl shadow-sm" // Hintergrund, Rand, Padding
                                 >
                                     <span className="text-lg font-medium text-neutral-dark">{tier.duration}</span>
-                                    <span className={`${priceTextSizes[index] || "text-base"} font-bold text-primary`}>{tier.price}€</span> {/* Dynamische Textgröße */}
+                                    <span className={`text-xl font-bold text-primary`}>{tier.price}€</span> {/* Dynamische Textgröße */}
                                 </div>
                             ))}
 
