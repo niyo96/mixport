@@ -10,7 +10,7 @@ const WhatsAppButton = () => {
         variant="whatsapp" 
         className="shadow-lg flex items-center gap-2 !px-4 !py-3" // Kleinere Paddings für den mobilen Button
       >
-        <span className="text-sm font-bold">WhatsApp</span>
+        <span className="text-sm font-bold text-black">WhatsApp</span>
       </Button>
     </div>
   );

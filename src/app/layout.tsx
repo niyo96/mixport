@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mixport.de"),
+  alternates: {
+    canonical: "/",
+  },
   title: "MIXPORT | DJ Equipment mieten",
   description: "Hochwertiges DJ Equipment und PA-Anlagen mieten. Professionelle Beratung und zuverlässiger Service für deine Veranstaltung.",
 };

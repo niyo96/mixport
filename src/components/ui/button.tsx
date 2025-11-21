@@ -20,11 +20,11 @@ const Button = ({ href, children, variant = 'primary', className = '' }: ButtonP
 
   const style: CSSProperties = {};
   if (variant === 'primary') {
-    style.backgroundColor = '#007AFF'; // Direktes Setzen der Primary-Farbe
+    style.backgroundColor = '#0052d9'; // Dunkleres Blau für besseren Kontrast
   } else if (variant === 'secondary') {
     style.backgroundColor = '#1D1D1F'; // Direktes Setzen der Neutral-Dark-Farbe
   } else if (variant === 'whatsapp') {
-    style.backgroundColor = '#34C759'; // Direktes Setzen der WhatsApp-Farbe
+    style.backgroundColor = '#25D366'; // Offizielle WhatsApp-Farbe
   }
 
   return (

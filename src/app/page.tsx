@@ -16,7 +16,7 @@ const seo = {
 // Hero Section Komponente
 const HeroSection = () => (
   <section className="text-center py-16 md:py-24">
-    <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-neutral-dark animate-fade-in-down">
+    <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-neutral-dark animate-fade-in-down text-[2.5rem] leading-[3rem] md:text-[4rem] md:leading-[4.5rem]">
       {seo.h1}
     </h1>
     <p className="max-w-2xl mx-auto text-lg md:text-xl text-neutral-dark/80 mb-8 animate-fade-in-up">
@@ -37,8 +37,8 @@ const ProductCard = ({ product }: { product: Product }) => (
       <Image
         src={product.imageUrl}
         alt={`Bild von ${product.name}`}
-        width={500}
-        height={500}
+        width={300}
+        height={300}
         className="w-full h-48 object-contain rounded-lg transition-transform duration-300"
       />
     </div>
