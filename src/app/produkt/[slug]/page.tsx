@@ -102,6 +102,11 @@ export default async function ProductDetailPage(
                         </div>
                     </DetailSection>
 
+                    {/* Abholort */}
+                    <DetailSection title="Abholort">
+                        <p className="text-neutral-dark/80">Hamburg Bergedorf</p>
+                    </DetailSection>
+
                     {/* Mietbedingungen */}
                     <DetailSection title="Mietbedingungen">
                         <div className="space-y-4 text-neutral-dark/80">
@@ -118,7 +123,7 @@ export default async function ProductDetailPage(
                                 <ul className="space-y-2">
                                     {product.rentalConditions.requirements.map((req, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckCircleIcon className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0"/>
+                                            <CheckCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0"/>
                                             <span>{req}</span>
                                         </li>
                                     ))}
