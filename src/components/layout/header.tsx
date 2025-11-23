@@ -10,19 +10,6 @@ const Header = () => {
               MIXPORT
             </Link>
           </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <Link href="/" className="text-neutral-dark hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                Equipment
-              </Link>
-              <Link href="/impressum" className="text-neutral-dark hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                Impressum
-              </Link>
-              <Link href="/datenschutz" className="text-neutral-dark hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                Datenschutz
-              </Link>
-            </div>
-          </div>
           {/* Mobile menu button will be added later */}
         </div>
       </nav>

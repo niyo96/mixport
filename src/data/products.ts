@@ -7,7 +7,7 @@ export const products: Product[] = [
     name: 'Pioneer DDJ-FLX10',
     category: 'DJ-Controller',
     shortDescription: 'Professioneller 4-Kanal DJ-Controller für rekordbox und Serato DJ Pro.',
-    longDescription: 'Du veranstaltest eine Party, Hochzeit oder ein anderes Event und benötigst hochwertiges DJ-Equipment? Hier kannst du einen Pioneer DDJ-FLX10, einen professionellen 4-Kanal-DJ-Controller, bequem für dein Event mieten.',
+    longDescription: 'Du planst eine Party, Hochzeit oder ein Event und suchst nach professioneller Veranstaltungstechnik? Unser Partyverleih bietet dir hochwertiges DJ-Equipment zum Mieten. Der Pioneer DDJ-FLX10 ist ein professioneller 4-Kanal-DJ-Controller, ideal für jedes Event. Miete jetzt die passende Eventtechnik für deine Feier.',
     priceInfo: 'ab 100€ / Tag',
     priceTiers: [
       { duration: '1 Tag (24h)', price: 100 },

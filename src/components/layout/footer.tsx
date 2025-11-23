@@ -6,7 +6,19 @@ const Footer = () => {
   return (
     <footer className="bg-neutral-light border-t border-neutral-dark/10">
       <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-sm text-neutral-dark/60">
-        <div className="flex justify-center space-x-6 mb-4">
+        <div className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-4">
+          <Link href="/" className="hover:text-primary transition-colors">
+            Equipment
+          </Link>
+          <Link href="/veranstaltungstechnik" className="hover:text-primary transition-colors">
+            Veranstaltungstechnik
+          </Link>
+          <Link href="/partyverleih" className="hover:text-primary transition-colors">
+            Partyverleih
+          </Link>
+          <Link href="/standort" className="hover:text-primary transition-colors">
+            Standort
+          </Link>
           <Link href="/impressum" className="hover:text-primary transition-colors">
             Impressum
           </Link>

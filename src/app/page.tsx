@@ -6,11 +6,11 @@ import type { Product } from '@/lib/types';
 
 // SEO-optimierte Texte
 const seo = {
-  title: "Professionelles DJ Equipment mieten | MIXPORT",
-  h1: "Miete High-End DJ-Equipment",
-  subheading: "Von Pioneer DJ-Konsolen bis zu kompletten PA-Anlagen – bei uns findest du professionelles Equipment für dein Event. Zuverlässig, einfach und schnell.",
-  cta: "Jetzt Equipment ansehen",
-  productSectionTitle: "Unser Equipment",
+  title: "DJ Equipment & Veranstaltungstechnik in Hamburg mieten | MIXPORT",
+  h1: "DJ Equipment in Hamburg mieten",
+  subheading: "Dein Verleih für Veranstaltungstechnik in Hamburg. Miete hochwertiges DJ Equipment wie den Pioneer DDJ-FLX10 für deine Party. Abholung in Hamburg Bergedorf.",
+  cta: "Jetzt in Hamburg mieten",
+  productSectionTitle: "Unser DJ Equipment für Hamburg",
 };
 
 // Hero Section Komponente
